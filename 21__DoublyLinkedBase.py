@@ -5,9 +5,6 @@
 # __len__ , is_empty , _insert_between(self,e,predecessor,successor) returns the new node,
 # _delete_node(self,node) returns deleted element
 
-from tkinter import N
-
-
 class _DoublyLinkedBase():
 
     class _Node():
