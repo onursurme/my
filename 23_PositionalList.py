@@ -39,53 +39,80 @@
 # L.delete(L.last()) 5            9s, 8p, 3r
 # L.replace(p,7)     8            9s, 7p, 3r
 
-class PositionalList( DoublyLinkedBase):
+from _DoublyLinkedBase import _DoublyLinkedBase
+
+
+class PositionalList(_DoublyLinkedBase):
     """A sequential container of elements allowing positional access."""
 
-    #-------------------------- nested Position class --------------------------
+    # -------------------------- nested Position class --------------------------
     class Position:
-        def init (self, container, node):
-        """Constructor should not be invoked by user."""
-            self. container = container
-            self. node = node
-        
+        def __init__(self, container, node):
+            """Constructor should not be invoked by user."""
+            self._container = container
+            self._node = node
+
         def element(self):
-            
+            return self._node._element
+
         def __eq__(self, other):
-            
+            return type(self) is type(other) and other._node is self._node # burayı anlamadım
+
         def __ne__(self, other):
-            
-    def _validate(self,p):
-        """Return position s node, or raise appropriate error if invalid."""
-        
-    def make position(self, node):
-    """Return Position instance for given node (or None if sentinel)."""
-    
+            return not (self==other) # self!=other olmaz mı, neden is kullanmadık?
+
+    def _validate(self, p):
+        """Return position's node, or raise appropriate error if invalid."""
+        if not isinstance(self.Position):
+            raise TypeError("not a position")
+        if not (self==p._container):
+            raise ValueError("p doesn't belong to this container")
+        if p._node._next is None: # if p._node._next == None: ile aynı mı
+            raise ValueError("p is no longer valid")
+        return p._node
+
+    def _make_position(self, node):
+        """Return Position instance for given node (or None if sentinel)."""
+        if node is self._header or node is self._trailer:
+            return None
+        return self.Position(self,node)
+
     def first(self):
-        
+        pass
+
     def last(self):
-        
-    def before(self,p):
-        
-    def after(self,p):
-    
+        pass
+
+    def before(self, p):
+        pass
+
+    def after(self, p):
+        pass
+
     def __iter__(self):
-        
-    # override inherited version to return Position, rather than Node
-    def insert between(self, e, predecessor, successor):
-        
+        pass
+
+        # override inherited version to return Position, rather than Node
+    def _insert_between(self, e, predecessor, successor):
+        pass
+
     def add_first(self, e):
-    """Insert element e at the front of the list and return new Position"""
-    
+        """Insert element e at the front of the list and return new Position"""
+        pass
+
     def add_last(self, e):
-        
+        pass
+
     def add_before(self, p, e):
-        
+        pass
+
     def add_after(self, p, e):
-        
-    def delete(self,p):
-    
-    def replace(self,p,e):
-    """Replace the element at Position p with e.
-       Return the element formerly at Position p."""
-    
+        pass
+
+    def delete(self, p):
+        pass
+
+    def replace(self, p, e):
+        """Replace the element at Position p with e.
+        Return the element formerly at Position p."""
+        pass
