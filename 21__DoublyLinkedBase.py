@@ -17,10 +17,10 @@ class _DoublyLinkedBase():
             self._next = next
 
     def __init__(self):
-        self.header = self._Node(None, None, None)
-        self.trailer = self._Node(None, None, None)
-        self.header._next = self.trailer
-        self.trailer._prev = self.header
+        self._header = self._Node(None, None, None)
+        self._trailer = self._Node(None, None, None)
+        self._header._next = self._trailer
+        self._trailer._prev = self._header
         self.size = 0
 
     def __len__(self):
