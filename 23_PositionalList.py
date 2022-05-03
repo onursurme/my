@@ -1,43 +1,20 @@
 # A PositionalList class based on a doubly linked list
 # p.element( ): Return the element stored at position p.
-# In the context of the positional list ADT, positions serve as parameters to some
-# methods and as return values from other methods. In describing the behaviors of a
-# positional list, we being by presenting the accessor methods supported by a list L:
+# accessor methods:
 # L.first( ): Return the position of the first element of L, or None if L is empty.
 # L.last( ): Return the position of the last element of L, or None if L is empty.
-# L.before(p): Return the position of L immediately before position p, or None
-# if p is the first position.
-# L.after(p): Return the position of L immediately after position p, or None if
-# p is the last position.
-# L.is empty( ): Return True if list L does not contain any elements.
+# L.before(p): Return the position of L immediately before position p, or None if p is the first position.
+# L.after(p): Return the position of L immediately after position p, or None if p is the last position.
+# L.is_empty( ): Return True if list L does not contain any elements.
 # len(L): Return the number of elements in the list.
-# iter(L): Return a forward iterator for the elements of the list. See Section
-# 1.8 for discussion of iterators in Python.
-# The positional list ADT also includes the following update methods:
-# L.add first(e): Insert a new element e at the front of L, returning the position
-# of the new element.
-# L.add last(e): Insert a new element e at the back of L, returning the position
-# of the new element.
-# L.add before(p, e): Insert a new element e just before position p in L, returning
-# the position of the new element.
-# L.add after(p, e): Insert a new element e just after position p in L, returning
-# the position of the new element.
-# L.replace(p, e): Replace the element at position p with element e, returning
-# the element formerly at position p.
-# L.delete(p): Remove and return the element at position p in L, invalidating
-# the position.
-# Operation          Return Value L
-# L.add_last(8)      p            8p
-# L.first()          p            8p
-# L.add_after(p,5)   q            8p, 5q
-# L.before(q)        p            8p, 5q
-# L.add_before(q,3)  r            8p, 3r, 5q
-# r.element()        3            8p, 3r, 5q
-# L.after(p)         r            8p, 3r, 5q
-# L.before(p)        None         8p, 3r, 5q
-# L.add_first(9)     s            9s, 8p, 3r, 5q
-# L.delete(L.last()) 5            9s, 8p, 3r
-# L.replace(p,7)     8            9s, 7p, 3r
+# iter(L): Return a forward iterator for the elements of the list. See Section # 1.8 for discussion of iterators in Python.
+# update methods:
+# L.add_first(e): Insert a new element e at the front of L, returning the position of the new element.
+# L.add_last(e): Insert a new element e at the back of L, returning the position of the new element.
+# L.add_before(p, e): Insert a new element e just before position p in L, returning the position of the new element.
+# L.add_after(p, e): Insert a new element e just after position p in L, returning the position of the new element.
+# L.replace(p, e): Replace the element at position p with element e, returning the element formerly at position p.
+# L.delete(p): Remove and return the element at position p in L, invalidating the position.
 
 from _DoublyLinkedBase import _DoublyLinkedBase
 
@@ -116,3 +93,41 @@ class PositionalList(_DoublyLinkedBase):
         """Replace the element at Position p with e.
         Return the element formerly at Position p."""
         pass
+
+L=PositionalList()
+print(L.add_last(8))      # p
+print(L)                  #8p
+print(L.first())          # p
+print(L)                  #8p
+print(L.add_after(p,5))   # q
+print(L)                  #8p, 5q
+print(L.before(q))        # p
+print(L)                  #8p, 5q
+print(L.add_before(q,3))  # r
+print(L)                  #8p, 3r, 5q
+print(r.element())        # 3
+print(L)                  #8p, 3r, 5q
+print(L.after(p))         # r
+print(L)                  #8p, 3r, 5q
+print(L.before(p))        # None
+print(L)                  #8p, 3r, 5q
+print(L.add_first(9))     # s
+print(L)                  #9s, 8p, 3r, 5q
+print(L.delete(L.last())) # 5    
+print(L)                  #9s, 8p, 3r
+print(L.replace(p,7))     # 8
+print(L)                  #9s, 7p, 3r
+
+# eg:
+# Operation          Return Value L
+# L.add_last(8)      p            8p
+# L.first()          p            8p
+# L.add_after(p,5)   q            8p, 5q
+# L.before(q)        p            8p, 5q
+# L.add_before(q,3)  r            8p, 3r, 5q
+# r.element()        3            8p, 3r, 5q
+# L.after(p)         r            8p, 3r, 5q
+# L.before(p)        None         8p, 3r, 5q
+# L.add_first(9)     s            9s, 8p, 3r, 5q
+# L.delete(L.last()) 5            9s, 8p, 3r
+# L.replace(p,7)     8            9s, 7p, 3r

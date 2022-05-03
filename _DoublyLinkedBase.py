@@ -1,3 +1,5 @@
+# 21__DoublyLinkedBase dosyası ile aynı, import edilirken dosya adının başında rakam kabul etmediği için
+# hem başında rakamlı hem rakamsız halini yaptım
 # s274 code fragment 7.12
 # Code Fragment 7.12: A base class for managing a doubly linked list.
 # nested class _Node
