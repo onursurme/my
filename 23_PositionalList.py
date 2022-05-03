@@ -42,11 +42,11 @@ class PositionalList(_DoublyLinkedBase):
             return not (self == other)
 
         def __repr__(self):
-            return str("Position info :", self._container+" "+self._node._element)
+            return str("Position info :"+ str(self._node._element))
 
     def _validate(self, p):
         """Return position's node, or raise appropriate error if invalid."""
-        if not isinstance(self.Position):
+        if not isinstance(p,self.Position):
             raise TypeError("not a position")
         if not (self == p._container):
             raise ValueError("p doesn't belong to this container")
@@ -78,7 +78,7 @@ class PositionalList(_DoublyLinkedBase):
         cursor = self.first()
         while cursor is not None:
             yield cursor.element()
-            cursor = cursor.after()
+            cursor = self.after(cursor)
 
         # override inherited version to return Position, rather than Node
     def _insert_between(self, e, predecessor, successor):
@@ -110,31 +110,43 @@ class PositionalList(_DoublyLinkedBase):
         old=node._element
         node._element=e
         return old
+    
+    def __repr__(self):
+        strn=""
+        for i in self:
+            strn+=str(i)
+        return strn
 
 
 L = PositionalList()
-print(L.add_last(8))      # p
-print(L)  # 8p
-print(L.first())          # p
-print(L)  # 8p
-print(L.add_after(p, 5))   # q
-print(L)  # 8p, 5q
-print(L.before(q))        # p
-print(L)  # 8p, 5q
-print(L.add_before(q, 3))  # r
-print(L)  # 8p, 3r, 5q
-print(r.element())        # 3
-print(L)  # 8p, 3r, 5q
-print(L.after(p))         # r
-print(L)  # 8p, 3r, 5q
-print(L.before(p))        # None
-print(L)  # 8p, 3r, 5q
-print(L.add_first(9))     # s
-print(L)  # 9s, 8p, 3r, 5q
-print(L.delete(L.last()))  # 5
-print(L)  # 9s, 8p, 3r
-print(L.replace(p, 7))     # 8
-print(L)  # 9s, 7p, 3r
+p=L.add_last(8)      # p
+print("L.add_last(8) :",p)      # p
+print("L :",L)  # 8p
+p=L.first()          # p
+print("p=L.first() :",p)  # 8p
+q=L.add_after(p, 5)   # q
+print("q=L.add_after(p,5) :",q)
+print("L :",L)  # 8p, 5q
+p=L.before(q)        # p
+print("p=L.before(q) :",p)
+print("L :",L)  # 8p, 5q
+r=L.add_before(q, 3)  # r
+print("r=L.add_before(q,3) :",r)
+print("L :",L)  # 8p, 3r, 5q
+print("r.element()=",r.element())        # 3
+print("L :",L)  # 8p, 3r, 5q
+r=L.after(p)         # r
+print("r=L.after(p) :",r)
+print("L :",L)  # 8p, 3r, 5q
+print("L.before(p) :",L.before(p))        # None
+print("L :",L)  # 8p, 3r, 5q
+s=L.add_first(9)     # s
+print("s=L.add_first(9) :",s)
+print("L :",L)  # 9s, 8p, 3r, 5q
+print("L.delete(L.last()) sonucu ",L.delete(L.last()))  # 5
+print("L :",L)  # 9s, 8p, 3r
+print("L.replace(p, 7) sonucu ",L.replace(p, 7))     # 8
+print("L :",L)  # 9s, 7p, 3r
 
 # eg:
 # Operation          Return Value L
