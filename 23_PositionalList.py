@@ -8,6 +8,7 @@
 # L.is_empty( ): Return True if list L does not contain any elements.
 # len(L): Return the number of elements in the list.
 # iter(L): Return a forward iterator for the elements of the list. See Section # 1.8 for discussion of iterators in Python.
+# (iter için first, element, after metodlarını kullan)
 # update methods:
 # L.add_first(e): Insert a new element e at the front of L, returning the position of the new element.
 # L.add_last(e): Insert a new element e at the back of L, returning the position of the new element.
@@ -33,18 +34,23 @@ class PositionalList(_DoublyLinkedBase):
             return self._node._element
 
         def __eq__(self, other):
-            return type(self) is type(other) and other._node is self._node # burayı anlamadım
+            # burayı anlamadım
+            return type(self) is type(other) and other._node is self._node
 
         def __ne__(self, other):
-            return not (self==other) # self!=other olmaz mı, neden is kullanmadık?
+            # self!=other olmaz mı, neden is kullanmadık?
+            return not (self == other)
+
+        def __repr__(self):
+            return str("Position info :", self._container+" "+self._node._element)
 
     def _validate(self, p):
         """Return position's node, or raise appropriate error if invalid."""
         if not isinstance(self.Position):
             raise TypeError("not a position")
-        if not (self==p._container):
+        if not (self == p._container):
             raise ValueError("p doesn't belong to this container")
-        if p._node._next is None: # if p._node._next == None: ile aynı mı
+        if p._node._next is None:  # if p._node._next == None: ile aynı mı
             raise ValueError("p is no longer valid")
         return p._node
 
@@ -52,71 +58,83 @@ class PositionalList(_DoublyLinkedBase):
         """Return Position instance for given node (or None if sentinel)."""
         if node is self._header or node is self._trailer:
             return None
-        return self.Position(self,node)
+        return self.Position(self, node)
 
     def first(self):
-        pass
+        return self._make_position(self._header._next)
 
     def last(self):
-        pass
+        return self._make_position(self._trailer._prev)
 
     def before(self, p):
-        pass
+        node = self._validate(p)
+        return self._make_position(node._prev)
 
     def after(self, p):
-        pass
+        node = self._validate(p)
+        return self._make_position(node._next)
 
-    def __iter__(self):
-        pass
+    def __iter__(self):  # first, element, after metodlarını kullan
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = cursor.after()
 
         # override inherited version to return Position, rather than Node
     def _insert_between(self, e, predecessor, successor):
-        pass
+        return self._make_position(super()._insert_between(e, predecessor, successor))
 
     def add_first(self, e):
         """Insert element e at the front of the list and return new Position"""
-        pass
+        return self._insert_between(e, self._header, self._header._next)
 
     def add_last(self, e):
-        pass
+        return self._insert_between(e, self._trailer._prev, self._trailer)
 
-    def add_before(self, p, e):
-        pass
+    def add_before(self, p, e):  # insert between'i kullan
+        node=self._validate(p)
+        return self._insert_between(e,node._prev,node)
 
     def add_after(self, p, e):
-        pass
+        node=self._validate(p)
+        return self._insert_between(e,node,node._next)
 
     def delete(self, p):
-        pass
+        node=self._validate(p)
+        return self._delete_node(node)
 
     def replace(self, p, e):
         """Replace the element at Position p with e.
         Return the element formerly at Position p."""
-        pass
+        node=self._validate(p)
+        old=node._element
+        node._element=e
+        return old
 
-L=PositionalList()
+
+L = PositionalList()
 print(L.add_last(8))      # p
-print(L)                  #8p
+print(L)  # 8p
 print(L.first())          # p
-print(L)                  #8p
-print(L.add_after(p,5))   # q
-print(L)                  #8p, 5q
+print(L)  # 8p
+print(L.add_after(p, 5))   # q
+print(L)  # 8p, 5q
 print(L.before(q))        # p
-print(L)                  #8p, 5q
-print(L.add_before(q,3))  # r
-print(L)                  #8p, 3r, 5q
+print(L)  # 8p, 5q
+print(L.add_before(q, 3))  # r
+print(L)  # 8p, 3r, 5q
 print(r.element())        # 3
-print(L)                  #8p, 3r, 5q
+print(L)  # 8p, 3r, 5q
 print(L.after(p))         # r
-print(L)                  #8p, 3r, 5q
+print(L)  # 8p, 3r, 5q
 print(L.before(p))        # None
-print(L)                  #8p, 3r, 5q
+print(L)  # 8p, 3r, 5q
 print(L.add_first(9))     # s
-print(L)                  #9s, 8p, 3r, 5q
-print(L.delete(L.last())) # 5    
-print(L)                  #9s, 8p, 3r
-print(L.replace(p,7))     # 8
-print(L)                  #9s, 7p, 3r
+print(L)  # 9s, 8p, 3r, 5q
+print(L.delete(L.last()))  # 5
+print(L)  # 9s, 8p, 3r
+print(L.replace(p, 7))     # 8
+print(L)  # 9s, 7p, 3r
 
 # eg:
 # Operation          Return Value L
