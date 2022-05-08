@@ -1,6 +1,6 @@
 # depth (recursive), hight, ve son 5 metodu yaz
 
-from linked_queue import LinkedQueue
+from linked_queue import LinkedQueue # breadth first search metodu için
 import collections
 
 
@@ -69,11 +69,16 @@ class Tree:
         else:
             return 1 + self.depth(self.parent(p))
 
-    def _height1(self):                 # works, but O(n^2) worst-case time
+    def _height1(self):                 # tree'nin height'ını verir, bir position'ın height'ını veremez
+                                        # works, but O(n^2) worst-case time
         """Return the height of the tree."""
         return max(self.depth(p) for p in self.positions() if self.is_leaf(p))
 
     def _height2(self, p):                  # time is linear in size of subtree
+                                            # height1 ve height2 fonksiyonlarının hız kıyaslaması için
+                                            # bknz bu klasördeki height yöntemleri hız farkı figure8.2.png dosyası
+                                            # height2 height1den farklı olarak sadece root için değil
+                                            # herhangi bir p position'ı için height hesaplayabiliyor
         """Return the height of the subtree rooted at Position p."""
         if self.is_leaf(p):
             return 0
@@ -85,7 +90,7 @@ class Tree:
         If p is None, return the height of the entire tree.
         """
         if p is None:
-            p = self.root()
+            p = self.root()  # bunun yerine def height(self,P=self.root()) olmaz mıydı?
         return self._height2(p)        # start _height2 recursion
 
     def __iter__(self):

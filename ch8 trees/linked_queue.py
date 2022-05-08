@@ -1,6 +1,11 @@
-# LinkedQueue için dequeue(self) ve enqueue(self,e) metodlarını yaz
-# yeniler tail'e eklenecek, dequeue edilecek olan ise head
-
+# bu class'ı bu klasöre (ch8 trees klasörüne) de koymamın nedeni 
+# s335-336daki breadth first search de kullanılıyor olması.
+#
+# In Code Fragment 8.20, we provide an implementation of the breadth-first traversal
+# algorithm in the context of our Tree class. Recall that the breadth-first traversal
+# algorithm is not recursive; it relies on a queue of positions to manage the traversal
+# process. Our implementation uses the LinkedQueue class from Section 7.1.2,
+# although any implementation of the queue ADT would suffice.
 
 class Empty(Exception):
     pass
