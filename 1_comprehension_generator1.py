@@ -3,7 +3,7 @@
 # ( k*k for k in range(1, n+1) ) generator comprehension
 # { k : k*k for k in range(1, n+1) } dictionary comprehension
 
-# 1den 3e kadarki sayıların karelerini veren generator comprehension yazarak toplamını bul
+# 1den 3e kadarki sayıların karelerini veren generator comprehension yaz, sonra toplamını bul
 # 1+4+9=14
 
 

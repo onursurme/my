@@ -8,12 +8,13 @@ print(sum(x*x for x in range(0,4)))
 g1=(x*x for x in range(0,4))
 print(sum(g1))
 
-# 1den n'e kadarki tek sayıların karelerini veren bir list comprehension'ın toplamını dönen bir fonks yaz
+# 1den n'e kadarki (n dahil) tek sayıların karelerini veren bir list comprehension'ın toplamını dönen bir fonks yaz
 
 def sumofodds(n):
-    return sum(x*x for x in range(0,n) if x%2==1)
+    # return sum(x*x for x in range(1,n+1) if x%2==1) bu da olur alttaki de
+    return sum([x*x for x in range(1,n+1) if x%2==1])
 
-print(sumofodds(5))  #  1*1+3*3
+print(sumofodds(5))  #  1*1+3*3+5*5
 
 # verilen bir iterable'ın (ör:range(1,5)) tersini dönderen bir fonks yaz (list comprehension kullansın)
 
@@ -31,7 +32,7 @@ def fib():
         yield f1
         f1,f2=f2,f1+f2
         
-f=fib()
+f=fib()   # bu satırı yazmayıp 2 alta print(next(fibo())) yazarsak hep sıfır yazar çünkü fibo() hep baştan oluşur
 for x in range(0,10):
     print(next(f))
     
