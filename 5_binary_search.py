@@ -62,6 +62,22 @@ def binary_search2(data,target,low,high): # benim ilk yazdığımSUBOPTIMAL (tai
     else:
         return mid
 
+def binary_search3(data,target,low,high): # ben yazdım, çalışıyor
+    mid=(low+high)//2
+    print("mid = ", mid)
+    print("data["+str(mid)+"]="+str(data[mid]))
+    if data[mid]==target:
+        print("buldum")
+        return mid
+    if mid==low and mid==high:
+        return False
+    if data[mid]>target:
+        print(str(low)+" "+str(mid))
+        return binary_search(data,target,low,mid)
+    else:
+        print(str(mid+1)+" "+str(high))
+        return binary_search(data,target,mid+1,high)
+
 data=[2, 4, 9, 11, 12, 22, 29, 43, 45, 46, 47, 54, 64, 65, 73, 74, 89, 91, 95, 97]
 print(binary_search2(data,95,0,19))
 input()
@@ -80,7 +96,7 @@ input()
 
 
 
-def binary_search3(data,target,low,high): # recursive olmayan şekilde yazdım (tail recursive olduğu için kolayca bu hale dönüşüyor)
+def binary_search4(data,target,low,high): # recursive olmayan şekilde yazdım (tail recursive olduğu için kolayca bu hale dönüşüyor)
     while not low>high:  # veya while low<=high:
         mid = (low+high) // 2
         print(low,mid,high)
@@ -91,10 +107,22 @@ def binary_search3(data,target,low,high): # recursive olmayan şekilde yazdım (
         else:
             low = mid+1
     return False
+
+def binary_search5(data,target,low,high):
+    while True:
+        if low>high:
+            return False
+        mid=(low+high)//2
+        if data[mid]==target:
+            return mid
+        elif data[mid]>target:
+            high=mid-1
+        else:
+            low=mid+1
     
 data=[2, 4, 9, 11, 12, 22, 29, 43, 45, 46, 47, 54, 64, 65, 73, 74, 89, 91, 95, 97]
 #data = random.sample(range(1, 100), 20)
 #data.sort()
 #print(data)
 #input()
-print(binary_search3(data,96,0,19))
+print(binary_search4(data,96,0,19))

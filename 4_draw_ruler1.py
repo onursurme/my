@@ -64,5 +64,10 @@ def draw_ruler(num_inches,majorlength):
         draw_line(majorlength)
         draw_interval(majorlength-1)
     draw_line(majorlength)
+    # şöyle de olur : 
+    #    draw_line(majorlength)
+    #for x in range(num_inches):
+    #    draw_interval(majorlength-1)
+    #    draw_line(majorlength)
 
 draw_ruler(1,3)
