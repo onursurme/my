@@ -15,6 +15,7 @@ print(pow1(2,3))
 # bir integer'ı binary'ye çevirip basamakları bir list yapmanın hızlı ve kolay bir yolu : [int(x) for x in bin(8)[2:]]
 
 def pow2(x,n):
+    pass
     
 
 # pow3(x,n) iterative
