@@ -206,6 +206,7 @@ def reverse5(data):  # data'ya dokunmadan yeni bir list oluşturan versiyonu yaz
     if len(data)==0:
         return []    # sadece return yazınca nontype ile list'i toplayamam diyor
     return [data[-1]]+reverse5(data[0:-1])   # baştaki data[-1] i köşeli paranteze almazsam list kabul etmiyor
+                                             # data[0:-1] deki sıfır gereksiz
 
 # iterative, reverse6(data), data'yı reverse eder, ilk ve son elemanı yer değiştir, 2. ve sondan 2. elemanı yer değiştir,...
 
@@ -236,6 +237,13 @@ def reverse5(data):  # data'ya dokunmadan yeni bir list oluşturan versiyonu yaz
 
 
 def reverse6(data): # iterative version yazdım
+    # bu da olur : 
+    # start=0
+    # end=len(data)-1
+    # while start<end:
+    #     data[start],data[end]=data[end],data[start]
+    #     start+=1
+    #     end-=1
     for x in range(len(data)//2):
         data[x],data[len(data)-1-x]=data[len(data)-1-x],data[x]
 

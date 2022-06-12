@@ -9,6 +9,22 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def pow1(x,n):        # benim yazdığım recursive. kitap diyor ki bundan çok daha hızlı bir yolu var. pow2 de bunu araştırdım
     if n==0:          # if n==1:  return x   de olur
         return 1
@@ -39,7 +55,55 @@ def pow2(x,n):       # kitap der ki pow1'dekinden çok daha hızlı bir yolu var
         return x
     return pow2(x,n//2)*pow2(x,n//2)*pow2(x,n-n//2-n//2) #burası şöyle olabilir if x even return pow2*pow2 else return pow2*pow2*x
 
+def pow2cached(x,n):  # functools cache lru kullanılabilirdi
+    cache=dict()
+    cache[0]=1
+    cache[1]=x
+    cache[2]=x*x
+    if n<3:
+        return cache[n]
+    k,r=2,cache[2]
+    while k<n:
+        for key in sorted(cache, reverse=True):
+            value=cache[key]
+            #print(key,value,k,r)
+            #input()
+            if k*key<=n:
+                print(n,k,key,cache)
+                input()
+                k=k+key
+                r=r*value
+                cache[k*key]=r
+                #print("new",key,value,k,r)
+                break
+    #print(cache)
+    return r
+
+from functools import lru_cache
+
+@lru_cache()
+def pow2lru(x,n):
+    if n==0:
+        return 1
+    if n==1:
+        return x
+    return pow2lru(x,n//2)*pow2lru(x,n//2)*pow2lru(x,n-n//2-n//2) #burası şöyle olabilir if x even return pow2*pow2 else return pow2*pow2*x
+
+
 # pow3(x,n) iterative
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
