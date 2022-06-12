@@ -13,6 +13,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 def summ(data):
     if len(data)==0:
         return 0
@@ -20,6 +32,7 @@ def summ(data):
 
 # bir list alıp onun tersi şekilde sıralanmış yeni bir list dönderen recursive bir fonks yaz
 # girdi : data   çıktı : data2
+# hint : 2 yol var
 
 
 
@@ -35,6 +48,19 @@ def summ(data):
 
 
 
+
+
+
+
+
+
+
+
+def reverse0(data):
+    if len(data)==1:
+        return [data[0]]
+    data2=[data[-1]]+reverse0(data[:-1])
+    return data2
 
 def reverse(data):  # reverse4 ile benzer, yeni bir list oluşturuyor
     if len(data)<2:
@@ -48,6 +74,20 @@ def reverse(data):  # reverse4 ile benzer, yeni bir list oluşturuyor
 
 # girdi : data,start,end  (start=reverse edilecek kısmın başlangıç indeksi, end=reverse edilecek kısmın bitiş endeksi)
 # çıktı : yok (data reverse edilecek)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,10 +116,25 @@ def reverse2(data,start,end):  # çalışıyor ama start ve end parametrelerinin
 
 
 
-def reverse3(data,start=0,end=0): # en iyisi bu oldu. kitapta da böyle yapmışlar
-    if start==0 and end==0: # yani fonksiyon ilk kez çağrıldıysa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def reverse3(data,start=0,end=0): # kitapta böyle
+    if start==0 and end==0:
         end=len(data)-1
-    if start>=end:  #kitapta if start<end deyip altına son 2 satırı yazmışlar,benimkinde return açık görünüyor
+    if start>=end:  #kitapta if start<end deyip altına son 2 satırı yazmışlar
         return
     data[start],data[end]=data[end],data[start]
     reverse3(data,start+1,end-1)
@@ -87,6 +142,18 @@ def reverse3(data,start=0,end=0): # en iyisi bu oldu. kitapta da böyle yapmış
 # reverse4(data,start,end):   recursive olacak, burada end dahil değil (end-1'e kadarki kısım reverse edilecek
 # (ipucu: def satırı ile birlikte toplam 4 satır)
 # bunun 2'den tek farkı end'in dahil olmaması, end-1'e kadarki kısmın reverse edilmesi
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -117,6 +184,24 @@ def reverse4(data,start,stop):                # kitaptaki. tail recursion var(ya
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def reverse5(data):  # data'ya dokunmadan yeni bir list oluşturan versiyonu yazayım dedim
     if len(data)==0:
         return []    # sadece return yazınca nontype ile list'i toplayamam diyor
@@ -133,11 +218,39 @@ def reverse5(data):  # data'ya dokunmadan yeni bir list oluşturan versiyonu yaz
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def reverse6(data): # iterative version yazdım
     for x in range(len(data)//2):
         data[x],data[len(data)-1-x]=data[len(data)-1-x],data[x]
 
 # iterative, reverse7(data,start,stop) (ipucu : reverse4 (kitaptaki) tail recursive)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
