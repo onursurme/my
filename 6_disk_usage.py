@@ -58,6 +58,16 @@ def disk_usage_my(path):  # ben yazdım ve çalışmıyor, diğerleri çalışı
         total += disk_usage_my(os.path.join(path, y))
     return total
 
+def disk_usage_my2(path):  # çalışıyor
+    sm=0
+    if not os.path.isdir(path):  # path dosyaysa (klasör değilse)
+        print(path,os.path.getsize(path))
+        sm+= os.path.getsize(path)
+    else: # path bir klasör ise:
+        print(path)
+        for x in os.listdir(path):
+            sm+= disk_usage_my2(os.path.join(path,x))
+    return sm
 
 def get_dir_size(path):
     total = 0
@@ -70,16 +80,16 @@ def get_dir_size(path):
     return total
 
 
-path = 'C:\\m7\\apple'
+path = 'D:\\m7\\bicycle'
 # raw string deniyor. boşluk karakteri varsa path'de raw string olarak yazınca sorun çıkmıyor
-path2 = r'C:\m7\apple\adobe illustrator mac'
-path3 = r'C:\m7\0 Julia'
-path4 = r'C:\m7\bicycle'
+path2 = r'D:\m7\apple\adobe illustrator mac'
+path3 = r'D:\m7\0 Julia'
+path4 = r'D:\m7\bicycle'
 # print(os.path.getsize(path2)) # mac'deki windows'da çalışmadı nedense, sıfır dönüyor
 #print("listdir : ",os.listdir(path2))
 
 # print("os.stat : ",os.stat(path2))  # içindeki st_size sıfır nedense, scandir kullanmak gerekiyor
 # print("os.stat : ",os.stat(path2).st_size)  # sıfır veriyor hatalı olarak
-print(disk_usage(path))
-print(get_dir_size(path2), " (get_dir_size)")
+print(disk_usage_my2(path))
+print(get_dir_size(path), " (get_dir_size)")
 # print(os.scandir(path))
