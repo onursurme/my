@@ -24,6 +24,11 @@
 
 
 
+
+
+
+
+
 def binary_sum(S, start, stop):      # kitaptaki
     if start >= stop:                # zero elements in slice (recursive çağrılarda bu koşula gerek yok ama
                                      # kullanıcıdan ilk çağrıda böyle gelebilir)
