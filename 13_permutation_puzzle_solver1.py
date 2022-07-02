@@ -1,5 +1,11 @@
 import copy
 
+# U isimli bir listin k uzunluktaki permütasyonlarını
+# yield eden, return eden, yazdıran
+# recursive ve iterative
+# 6 çeşit fonksiyon yaz
+# combinatiom da yaz
+
 # permutation(k,S,U): k altküme uzunluğu, S boş, recursive
 # U permütasyonu hesaplanacak olan küme (universal, evrensel küme) 
 # S boş gidiyor, boş dönüyor
@@ -246,3 +252,18 @@ p6=permute6(['x','y','z'])
 print(p6)
 for i in p6:
     print(i)
+
+# ITERATIVE (recursive her fonksiyon stack kullanarak iterative yapılabilir)
+def perms(word):
+    stack = list(word)
+    results = [stack.pop()]
+    while len(stack) != 0:
+        c = stack.pop()
+        new_results = []
+        for w in results:
+            for i in range(len(w)+1):
+                new_results.append(w[:i] + c + w[i:])
+        results = new_results
+    return results
+
+print(perms("abc"))

@@ -1,6 +1,8 @@
 # U isimli bir listin k uzunluktaki permütasyonlarını
 # yield eden, return eden, yazdıran
-# 3 çeşit fonksiyon yaz
+# recursive ve iterative
+# 6 çeşit fonksiyon yaz
+# combinatiom da yaz
 
 # permutation(k,S,U): k altküme uzunluğu, S boş, recursive
 # U permütasyonu hesaplanacak olan küme (universal, evrensel küme) 
