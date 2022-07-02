@@ -1,6 +1,6 @@
 # permutation(k,S,U): k altküme uzunluğu, S boş, recursive
-# U permütasyonu hesaplanacak olan küme (universal evrensel küme) 
-# S boş gidiyor, boş dönüyor
+# U permütasyonu hesaplanacak olan küme (universal, evrensel küme) 
+# S boş (ipucu: en sonunda yine boş oluyor)
 # fonksiyon permütasyonları return etmiyor, S'e koyuyor
 # permütasyonlar fonk içinde print ediliyor
 

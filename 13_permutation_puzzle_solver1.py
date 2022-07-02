@@ -1,10 +1,7 @@
 import copy
 
-def puzzle_solver(U,L,C):
-    return
-
 # permutation(k,S,U): k altküme uzunluğu, S boş, recursive
-# U permütasyonu hesaplanacak olan küme (universal evrensel küme) 
+# U permütasyonu hesaplanacak olan küme (universal, evrensel küme) 
 # S boş gidiyor, boş dönüyor
 # fonksiyon permütasyonları return etmiyor, S'e koyuyor
 # permütasyonlar fonk içinde print ediliyor
@@ -76,24 +73,15 @@ def permutation3(k,S,U):  # kitaptaki. bu kez U'yu set yaptım kitaptaki gibi.
 k=3
 S=[]
 U=[1,2,3]
+permutation(k,S,U)
+input()
 permutation2(k,S,U)
+input()
 print(S)
 permutation3(k,S,{1,2,3})
-# U2=copy.copy(U)
-# for x in U2:
-#     S.append(x)
-#     print("S : ",S)
-#     U.remove(x)
-#     print("U : ",U)
-    
-U={ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9}
-L={'b','o','y','g','i','r','l','a','d','c','t','p','n'}
-C1="pot+pan=bib"
-C2="dog+cat=pig"
-C3="boy+girl=baby"
-C=[C1,C2,C3]
+input()
 
-# İNTERNETTEN BULDUĞUM YÖNTEMLER 
+# DİĞER YÖNTEMLER 
 
 # Python program to print all permutations with
 # duplicates allowed
@@ -101,7 +89,6 @@ C=[C1,C2,C3]
 def toString(List):
     return ''.join(List)
 
-# Function to print permutations of string
 # This function takes three parameters:
 # 1. String
 # 2. Starting index of the string
@@ -115,16 +102,14 @@ def permute(a, l, r):
             permute(a, l+1, r)
             a[l], a[i] = a[i], a[l] # backtrack
 
-# Driver program to test the above function
 string = "ABC"
 n = len(string)
 a = list(string)
 permute(a, 0, n)
+print()
 
-# This code is contributed by Bhavya Jain
 
-
-def permute(s, answer):
+def permute2(s, answer):
     if (len(s) == 0):
         print(answer, end = "  ")
         return
@@ -134,52 +119,47 @@ def permute(s, answer):
         left_substr = s[0:i]
         right_substr = s[i + 1:]
         rest = left_substr + right_substr
-        permute(rest, answer + ch)
+        permute2(rest, answer + ch)
   
-# Driver Code
 answer = ""
-  
 s = input("Enter the string : ")
-  
 print("All possible strings are : ")
-permute(s, answer)
+permute2(s, answer)
+print()
   
-# This code is contributed by Harshit Srivastava
-
-# Python function to print permutations of a given list
-def permutation(lst):
-    
-    # If lst is empty then there are no permutations
+def permutation4(lst):
     if len(lst) == 0:
         return []
 
-    # If there is only one element in lst then, only
-    # one permutation is possible
     if len(lst) == 1:
         return [lst]
 
-    # Find the permutations for lst if there are
-    # more than 1 characters
-
     l = [] # empty list that will store current permutation
 
-    # Iterate the input(lst) and calculate the permutation
     for i in range(len(lst)):
         m = lst[i]
-
         # Extract lst[i] or m from the list. remLst is
         # remaining list
         remLst = lst[:i] + lst[i+1:]
-        
-        # Generating all permutations where m is first
-        # element
-        
-        for p in permutation(remLst):
+        # Generating all permutations where m is first element
+        for p in permutation4(remLst):
             l.append([m] + p)
     return l
 
-
-# Driver program to test above function
 data = list('123')
-for p in permutation(data):
+for p in permutation4(data):
     print (p)
+
+# başka bir tane
+def permutation5(lis):
+    if len(lis) == 1:
+        return [lis]
+    output = []
+    *front, last = lis
+    for perm in permutation5(front):
+        for i in range(len(perm) + 1):
+            new = perm[:i] + [last] + perm[i:]
+            output.append(new)
+    return sorted(output)
+
+print(permutation5([1,2,3]))
