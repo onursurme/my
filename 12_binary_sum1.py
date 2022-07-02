@@ -1,3 +1,42 @@
+# binary_sum(data) , data bir list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def binsum(data):
+    if len(data)==1:
+        return data[0]
+    return binsum(data[0:len(data)//2])+binsum(data[len(data)//2:len(data)])
+
+
+
+
 # binary_sum(S,start,stop):  S isimli array'in toplamını döner
 # S'i sağ ve sol diye iki parçaya böler, recursive olarak parçaların toplamından S'in toplamını bulur
 # stop son indeksin 1 büyüğü (Python'da 2. indeksin 1 küçüğünde bitiyor. range(0,3)'ün 0,1,2 olması gibi)
