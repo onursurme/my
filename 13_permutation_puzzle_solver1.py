@@ -1,4 +1,5 @@
 import copy
+from itertools import product
 
 # U isimli bir listin k uzunluktaki permütasyonlarını
 # yield eden, return eden, yazdıran
@@ -267,3 +268,44 @@ def perms(word):
     return results
 
 print(perms("abc"))
+
+def permutations6(head, tail=''):
+    if len(head) == 0:
+        print(tail)
+    else:
+        for i in range(len(head)):
+            permutations6(head[:i] + head[i+1:], tail + head[i])
+
+permutations6("onr")
+
+def permutations7(elements):
+    if len(elements) <= 1:
+        yield elements
+        return
+    for perm in permutations7(elements[1:]):
+        for i in range(len(elements)):
+            # nb elements[0:1] works in both string and list contexts
+            yield perm[:i] + elements[0:1] + perm[i:]
+
+print(list(permutations7("ONR")))
+        
+def permutations8(iterable, r=None):
+    pool = tuple(iterable)
+    n = len(pool)
+    r = n if r is None else r
+    for indices in product(range(n), repeat=r):  # itertools'un product fonksiyonu kullanılıyor
+        if len(set(indices)) == r:
+            yield tuple(pool[i] for i in indices)
+
+print(list(permutations8("ONR")))
+
+def perm9(a, k=0):
+   if k == len(a):
+      print(a)
+   else:
+      for i in range(k, len(a)):
+         a[k], a[i] = a[i] ,a[k]
+         perm9(a, k+1)
+         a[k], a[i] = a[i], a[k]
+
+perm9([1,2,3])
