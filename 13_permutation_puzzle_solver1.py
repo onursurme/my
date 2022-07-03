@@ -5,10 +5,10 @@ from itertools import product
 # yield eden, return eden, yazdıran
 # recursive ve iterative
 # 6 çeşit fonksiyon yaz
-# combinatiom da yaz
+# combination için de aynı fonksiyonları yaz
 
-# permutation(k,S,U): k altküme uzunluğu, S boş, recursive
-# U permütasyonu hesaplanacak olan küme (universal, evrensel küme) 
+# permutation(k,S,U): k altküme uzunluğu, S boş bir list, recursive
+# U permütasyonu hesaplanacak olan list (universal, evrensel küme) 
 # S boş gidiyor, boş dönüyor
 # fonksiyon permütasyonları return etmiyor, S'e koyuyor
 # permütasyonlar fonk içinde print ediliyor
@@ -62,6 +62,11 @@ def permutation2(k,S,U):  # kitaptaki. s176 pseudocode verilmiş ve U bir set, b
         S.remove(x)
         U.append(x)   # set olsaydı U.add() olacaktı
         
+# permutation(k,S,U): k altküme uzunluğu, S boş bir list, recursive
+# U permütasyonu hesaplanacak olan set (universal, evrensel küme) 
+# fonksiyon permütasyonları return etmiyor, S'e koyuyor
+# permütasyonlar fonk içinde print ediliyor
+
 def permutation3(k,S,U):  # kitaptaki. bu kez U'yu set yaptım kitaptaki gibi.
     U2=copy.copy(U)       # kitaptakinde bu satır yoktu, çalışmayınca ben ekledim (?)
                           # set olunca sadece son satırda U.append(x) yerine U.add(x) geliyor
@@ -82,9 +87,12 @@ S=[]
 U=[1,2,3]
 permutation(k,S,U)
 input()
+print("permutation 2 :")
 permutation2(k,S,U)
 input()
-print(S)
+print("S after permutation and permutation2 : ",S)
+input()
+print("permutation 3 :")
 permutation3(k,S,{1,2,3})
 input()
 
@@ -112,9 +120,10 @@ def permute(a, l, r):
 string = "ABC"
 n = len(string)
 a = list(string)
+print("permute :")
 permute(a, 0, n)
 print()
-
+input()
 
 def permute2(s, answer):
     if (len(s) == 0):
@@ -129,9 +138,10 @@ def permute2(s, answer):
         permute2(rest, answer + ch)
   
 answer = ""
-s = input("Enter the string : ")
-print("All possible strings are : ")
+s = "ABC"
+print("permute2 :")
 permute2(s, answer)
+input()
 print()
   
 def permutation4(lst):
@@ -154,8 +164,11 @@ def permutation4(lst):
     return l
 
 data = list('123')
+print("permutation4 : ")
 for p in permutation4(data):
     print (p)
+
+input()
 
 # başka bir tane
 def permutation5(lis):
@@ -169,7 +182,9 @@ def permutation5(lis):
             output.append(new)
     return sorted(output)
 
+print("permutation5 : ")
 print(permutation5([1,2,3]))
+input()
 
 def permute3(xs, low=0):
     if low + 1 >= len(xs):
@@ -183,8 +198,11 @@ def permute3(xs, low=0):
                 yield p        
             xs[low], xs[i] = xs[i], xs[low]
 
-for p in permute3([1, 2, 3, 4]):
+print("permute3 : ")
+for p in permute3([1, 2, 3]):
     print(p)
+
+input()
 
 # permute array
 #     if array is of size 2
@@ -195,7 +213,6 @@ for p in permute3([1, 2, 3, 4]):
 #             new subarray = array with excluded element
 #             return element + permute subarray
 
-print("permute4 başlıyor : ")
 
 def permute4(u):   # böyle yield ile çalışıyor ama print eden veya return eden versiyonlarını yazamadım (permute5 ve 6, aşağıda)
     if len(u)==0:
@@ -204,12 +221,12 @@ def permute4(u):   # böyle yield ile çalışıyor ama print eden veya return e
         for j in permute4([x for x in u if x != i]):
             yield [i]+j
 
+print("permute4 : ")
 p4=permute4(['x','y','z'])
 for i in p4:
     print(i)
 
 input()
-print("permute5 başlıyor : ")
 
 def permute5(u,ln):  # iyi değil, flat yapmaya, uzunluk kontrolüne gerek olmamalı, geliştirilmeli
     if len(u)==1:
@@ -226,10 +243,9 @@ def permute5(u,ln):  # iyi değil, flat yapmaya, uzunluk kontrolüne gerek olmam
             print(i)
     return flatr
 
+print("permute5 : ")
 permute5(['x','y','z'],3)
-
 input()
-print("permute6 başlıyor : ")
 
 def permute6(u):   # iyi değil, flat yapmaya gerek kalmamalı, geliştirilmeli
     if len(u)==1:
@@ -250,9 +266,9 @@ def permute6(u):   # iyi değil, flat yapmaya gerek kalmamalı, geliştirilmeli
     return flatr
 
 p6=permute6(['x','y','z'])
+print("permute6 : ")
 print(p6)
-for i in p6:
-    print(i)
+input()
 
 # ITERATIVE (recursive her fonksiyon stack kullanarak iterative yapılabilir)
 def perms(word):
@@ -267,7 +283,9 @@ def perms(word):
         results = new_results
     return results
 
+print("perms : ")
 print(perms("abc"))
+input()
 
 def permutations6(head, tail=''):
     if len(head) == 0:
@@ -276,7 +294,9 @@ def permutations6(head, tail=''):
         for i in range(len(head)):
             permutations6(head[:i] + head[i+1:], tail + head[i])
 
+print("permutations6 : ")
 permutations6("onr")
+input()
 
 def permutations7(elements):
     if len(elements) <= 1:
@@ -287,7 +307,9 @@ def permutations7(elements):
             # nb elements[0:1] works in both string and list contexts
             yield perm[:i] + elements[0:1] + perm[i:]
 
+print("permutations7 : ")
 print(list(permutations7("ONR")))
+input()
         
 def permutations8(iterable, r=None):
     pool = tuple(iterable)
@@ -297,7 +319,9 @@ def permutations8(iterable, r=None):
         if len(set(indices)) == r:
             yield tuple(pool[i] for i in indices)
 
+print("permutations8 : ")
 print(list(permutations8("ONR")))
+input()
 
 def perm9(a, k=0):
    if k == len(a):
@@ -308,4 +332,5 @@ def perm9(a, k=0):
          perm9(a, k+1)
          a[k], a[i] = a[i], a[k]
 
+print("perm9 : ")
 perm9([1,2,3])
