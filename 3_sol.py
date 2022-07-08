@@ -16,14 +16,12 @@
 # iterative return without stack
 # iterative print without stack
 
-def recyield():
-    sonuc = 1
-    x = 0
+def recyield(n=0): # ??????? 
+    if n<2:
+        yield 1
     while True:
-        yield sonuc
-        x = x + 1
-        sonuc = sonuc * x
-
+        yield n*(yield from recyield(n-1))
+    
 rc=recyield()
 print("recursive yield : ")
 for i in range(10):
@@ -50,9 +48,9 @@ def recprnt_old(n,f):
         else:
             return 1
     if n==f:
-        print(f"factorial({n}) = {n * recprnt(n-1,f)}")
+        print(f"factorial({n}) = {n * recprnt_old(n-1,f)}")
     else:
-        return n*recprnt(n-1,f)
+        return n*recprnt_old(n-1,f)
 
 def recprnt(n,f=0): # fonksiyon ilk çağrıldığında f=0 , recursive çağrılarda ise f=1 oluyor
     if n<2:
@@ -72,40 +70,43 @@ for i in range(10):
 
 input()
 
+# iter yield with stack
+# iter return with stack
+# iter print with stack
 
+def iteryield():  
+    sonuc = 1
+    x = 0
+    while True:
+        yield sonuc
+        x = x + 1
+        sonuc = sonuc * x
 
+iy=iteryield()
+print("iterative yield without stack : ")
+for i in range(10):
+    print(f"factorial({i}) = {next(iy)}")
 
+input()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def faktoryel(n):
-    if n==1:
-        return 1
-    return n*faktoryel(n-1)
-
-for x in range(1,7):
-    print(faktoryel(x))
-    
-# faktöryel'i iterative hesaplayan bir fonksiyon yaz
-
-def faktoryel2(n):
+def iterreturn(n):
     sonuc = 1
     for x in range(1,n+1):
         sonuc = sonuc * x
     return sonuc
 
+print("iterative return without stack : ")
 for x in range(1,7):
-    print(faktoryel2(x))
+    print(iterreturn(x))
+
+input()
+
+def iterprint(n):
+    sonuc = 1
+    for x in range(1,n+1):
+        sonuc = sonuc * x
+    print(f"factorial({n}) = {sonuc}")
+
+print("iterative return without stack : ")
+for x in range(1,7):
+    iterreturn(x)
