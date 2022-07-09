@@ -9,6 +9,18 @@ print(next(gentry(-3)))
 print(next(gentry(3)))
 input()
 
+# bir generator'ın son elemanını elde etme : 
+
+def genx():
+    for x in range(10):
+        yield x
+
+for last in genx():
+    pass
+
+print("Last element of genx is : ",last)
+input()
+
 def recursive_generator(lis):
     if lis:
         yield lis[0]
