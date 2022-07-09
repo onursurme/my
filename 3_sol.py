@@ -16,17 +16,16 @@
 # iterative return without stack
 # iterative print without stack
 
-def recyield(n=0): # ??????? 
-    if n<2:
-        yield 1
-    while True:
-        yield n*(yield from recyield(n-1))
-    
-rc=recyield()
-print("recursive yield : ")
-for i in range(10):
-    print(f"factorial({i}) = {next(rc)}")
 
+
+def recyield(n=0,f=0): # ??????? 
+    yield 100
+    pass
+
+    
+print("recursive yield : ")
+rc=recyield(10)
+print(f"factorial(10) = {next(rc)}")
 input()
 
 def recret(n):
@@ -93,7 +92,7 @@ def iterreturn(n):
     sonuc = 1
     for x in range(1,n+1):
         sonuc = sonuc * x
-    return sonuc
+    return sonuc    # stack'siz iterprint'in tek farkı bu satırda return etmeyip print etmesi
 
 print("iterative return without stack : ")
 for x in range(1,7):
@@ -101,7 +100,7 @@ for x in range(1,7):
 
 input()
 
-def iterprint(n):
+def iterprint(n): # stack'siz iterprint
     sonuc = 1
     for x in range(1,n+1):
         sonuc = sonuc * x
