@@ -10,7 +10,7 @@ print("after c.send(None)")
 input()
 c.send(987) # "From generator 987" yazar
 input()
-print(c.send(988)) # "From generator 987" ve "3" yazar
+print(c.send(988)) # "From generator 988" ve "3" yazar
 input()
 try:
     while True:
