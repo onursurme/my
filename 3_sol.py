@@ -91,7 +91,7 @@ def iteryield():   # sürekli sıradakini veren
         x = x + 1
         sonuc = sonuc * x
 
-print("iterative yield without stack : ")
+print("iterative yield without stack (continuous) : ")
 iy=iteryield()
 for i in range(6):
     print(f"factorial({i}) = {next(iy)}")
@@ -105,7 +105,7 @@ def iteryield2(n):   # n sayısının faktöryelini veren
     yield sonuc
     return
 
-print("iterative yield without stack 2 : ")
+print("iterative yield without stack 2 (belli bir n) : ")
 for i in range(6):
     print(f"iterative yield ({i}) : {next(iteryield2(i))}")
 
