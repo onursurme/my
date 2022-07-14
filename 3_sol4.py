@@ -1,5 +1,6 @@
 def coroutine():
     for i in range(1, 10):
+        print("next iteration of the for loop in the coroutine.")
         print("From generator {}".format((yield i)))
         print("i = ",i)
 
