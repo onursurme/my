@@ -4,6 +4,44 @@ import sys
 # global bir count=0 değişkeni olsun
 # her recursive çağrıda count 1 artsın ve ekrana yazılsın
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def a():
     global count
     count+=1

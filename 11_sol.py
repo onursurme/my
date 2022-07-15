@@ -1,5 +1,31 @@
 # pow1(x,n)  x'in n. kuvvetini döner. recursive
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def pow1(x,n):
     if n==1:
         return x

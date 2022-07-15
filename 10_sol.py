@@ -1,5 +1,30 @@
 # bir list'in toplamını recursive hesaplayan bir fonks yaz
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def summ(data):
     if len(data)==0:   # veya len(data)==1 ise return data[0]
         return 0
@@ -86,6 +111,10 @@ def reverse5(data):
         return [data[0]]
     return [data[-1]]+reverse5(data[0:-1])
 
+# def reverse5(data):  böyle de olur
+#    if len(data)==0:
+#        return []
+#    return [data[-1]]+reverse5(data[:-1])
 
 print(data)
 print(reverse5(data))
@@ -104,6 +133,7 @@ def reverse6(data):
 # def reverse6(data): # daha önce böyle yazmışım. mantık şu: yapılacak değişim sayısı len(data)'nın yarısı kadar
 #     for x in range(len(data)//2):
 #         data[x],data[len(data)-1-x]=data[len(data)-1-x],data[x]
+# şu da olur :         data[x],data[-1-x]=data[-1-x],data[x]
 
 print(data)
 reverse6(data)
@@ -116,6 +146,10 @@ def reverse7(data,start,end):
     while start<end-1:
         data[start],data[end-1]=data[end-1],data[start]
         start,end=start+1,end-1
+# şu da olur : 
+# def reverse7(data,start,stop):
+#    for x in range((stop-start+1)//2):
+#        data[x+start],data[stop-x]=data[stop-x],data[x+start]
 
 print(data)
 reverse7(data,0,5)

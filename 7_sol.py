@@ -1,14 +1,42 @@
 # n. fibonacci sayısını iterative hesaplayan fonksiyon yaz
 
+# ardışık 2 fibonacci sayısını list olarak tutan bir generator yaz
+
+# n. fibonacci sayısını veren binary recursive (her seferinde kendini 2 kez çağıran) fonks yaz
+# neden kötü olduğunu açıkla
+
+# girdi : n
+# çıktı : [n. fibonacci sayısı, n-1. fibonacci sayısı]
+# recursive fibonacci fonks yaz. bad_fibo'dan neden daha iyi olduğunu açıkla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def fib(n):
     f1,f2=0,1
     for x in range(0,n):
         f1,f2=f2,f1+f2
     return f1
 
-print(fib(6))
-for x in range(10):
-    print(fib(x))
+for x in range(5):
+    print(x,fib(x))
+input()
     
 # ardışık 2 fibonacci sayısını list olarak tutan bir generator yaz
 

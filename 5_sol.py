@@ -3,6 +3,28 @@
 # tüm data aranacaksa 0 ve len(data)-1
 # target data'da varsa indeks değerini döner, yoksa False döner
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def binary_search(data,target,low,high):
     if low > high:
         return False
