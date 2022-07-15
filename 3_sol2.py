@@ -30,6 +30,9 @@ for k in recursive_generator([6,3,9,1]):
     print(k)
 
 print("----------")
+
+print("while else ve for else örnekleri : ")
+
 count = 0
 while (count < 4):    
     count = count+1

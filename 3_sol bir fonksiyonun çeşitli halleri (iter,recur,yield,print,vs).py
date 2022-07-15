@@ -6,24 +6,26 @@
 # stack kullanmadan iterative versiyonlarını da yaz
 # bu fonksiyonları kıyasla
 
-# kendimce 7 çeşit fonskiyon belirledim : 
+# bir problemin çözümünde kullanılabilecek farklı yöntemler : 
 # 1- recursive yield (sürekli sıradakini üreten ve verilen bir n sayısının faktöryelini üreten diye 2 çeşit olabilir)
 # 2- recursive return
 # 3- recursive print
 # 4- iterative yield without stack (sürekli sıradakini üreten ve verilen bir n sayısının faktöryelini üreten diye 2 çeşit olabilir)
 # 5- iterative return/print without stack
-# 6- iterative yield with stack (recursive'in stack kullanılarak iterative'e dönüştürülmüş hali) (sürekli sıradakini üreten ve verilen bir n sayısının faktöryelini üreten diye 2 çeşit olabilir)
+# 6- iterative yield with stack (recursive'in stack kullanılarak iterative'e dönüştürülmüş hali) (sürekli sıradakini üreten ve 
+# verilen bir n sayısının faktöryelini üreten diye 2 çeşit olabilir)
 # 7- iterative return/print with stack (recursive'in stack kullanılarak iterative'e dönüştürülmüş hali)
-# 4 ile 6, 5 ile 7 farklılar mı bilmiyorum, deneyip görelim : 
+# 8- bazı problemlerde 0'dan n'e giden ve n'den 0'a giden 2 ayrı çözüm yöntemi düşünülebilir (leaf'den root'a veya tersi de olabilir)
+# 9- bazı dizi/serilerde (ör: faktöryel, fibonacci) sürekli sıradakini yield eden veya n. terimi veren 2 ayrı problem olabilir
 
 def recyield2(n=0,f=0): # 0'dan başlayarak sıradaki sayının faktöryelini dönen recursive generator 
     while True:
         if n<2:
             yield 1
             if f==1:
-                return
+                return # recursive bir çağrıyla gelindiyse o generator'ı sonlandır
         else:
-            for prev in recyield2(n-1,1):
+            for prev in recyield2(n-1,1): # n-1'in faktöryelini hesaplayan generator'ün son değeri prev oluyor
                 pass
             yield prev * n
             if f==1:
@@ -80,10 +82,9 @@ for i in range(6):
 
 input()
 
-# iter yield without stack
-# iter return/print without stack
+# iter return without stack
 
-def iteryield():   # sürekli sıradakini veren
+def iteryield():   # iter yield without stack, sürekli sıradakini veriyor
     sonuc = 1
     x = 0          # iterreturn'deki for yerine burada x=0 while ve x=x+1 satırları var
     while True:
@@ -98,7 +99,7 @@ for i in range(6):
 
 input()
 
-def iteryield2(n):   # n sayısının faktöryelini veren
+def iteryield2(n):   # iterative yield without stack, n sayısının faktöryelini veren
     sonuc = 1
     for x in range(1,n+1):
         sonuc = sonuc * x
@@ -111,7 +112,7 @@ for i in range(6):
 
 input()
 
-def iterreturn(n):
+def iterreturn(n): # iterative return without stack
     sonuc = 1
     for x in range(1,n+1):
         sonuc = sonuc * x
