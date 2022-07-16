@@ -36,16 +36,16 @@ def permutation2(k,S,U):   # bunu sonraki tekrarda kendim yazdım
         print(S)
     for i in U:
         S.append(i)
-        permutation2(k-1,S,[x for x in U if x not in S])
+        permutation2(k-1,S,[x for x in U if x not in S]) # if i!=x yazsaydık da olurdu
         S.remove(i)
 
-permutation2(4,[],[1,2,3,4])
+permutation2(1,[],[1,2,3])
 input()
 
 
 def permutation(k,S,U):
-    if k==1:
-        print(S+U)
+    if k==0:
+        print(S)
         return
     for x in range(len(U)):
         a=U[x]
@@ -55,5 +55,5 @@ def permutation(k,S,U):
         S.remove(a)
         U.insert(x,a)
         
-data=[1,2,3,4]
-permutation(4,[],data)
+data=[1,2,3]
+permutation(1,[],data)

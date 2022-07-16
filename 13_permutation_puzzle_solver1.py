@@ -125,6 +125,18 @@ permute(a, 0, n)
 print()
 input()
 
+def perm9(a, k=0):   # permute (üstte) fonksiyonuna çok benziyor
+   if k == len(a):
+      print(a)
+   else:
+      for i in range(k, len(a)):
+         a[k], a[i] = a[i] ,a[k]
+         perm9(a, k+1)
+         a[k], a[i] = a[i], a[k]
+
+print("perm9 : ")
+perm9([1,2,3])
+
 def permute2(s, answer):
     if (len(s) == 0):
         print(answer, end = "  ")
@@ -321,16 +333,3 @@ def permutations8(iterable, r=None):
 
 print("permutations8 : ")
 print(list(permutations8("ONR")))
-input()
-
-def perm9(a, k=0):
-   if k == len(a):
-      print(a)
-   else:
-      for i in range(k, len(a)):
-         a[k], a[i] = a[i] ,a[k]
-         perm9(a, k+1)
-         a[k], a[i] = a[i], a[k]
-
-print("perm9 : ")
-perm9([1,2,3])

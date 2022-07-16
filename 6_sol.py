@@ -8,15 +8,39 @@ import os
 # os.path.join(path1, path2)  path1 ve path2'yi birleştirip yeni path döner. ör: c:\m7 ile bicycle'ı birleştirip c:\m7\bicycle döner
 
 
-path = 'C:\\m7\\apple'
-# raw string deniyor. boşluk karakteri varsa path'de raw string olarak yazınca sorun çıkmıyor
-path2 = r'C:\m7\apple\adobe illustrator mac'
-path3 = r'C:\m7\0 Julia'
-path4 = r'C:\m7\bicycle'
-# print(os.path.getsize(path2)) # mac'deki windows'da çalışmadı nedense, sıfır dönüyor
-#print("listdir : ",os.listdir(path2))
 
-# print("os.stat : ",os.stat(path2))  # içindeki st_size sıfır nedense, scandir kullanmak gerekiyor
-# print("os.stat : ",os.stat(path2).st_size)  # sıfır veriyor hatalı olarak
-print(disk_usage(path4))
-print(os.path.getsize(path4))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def disk_usage_my1(path):  # iterateive
+    pass
+
+
+
+def disk_usage_my2(path):  # çalışıyor
+    sm=0
+    if not os.path.isdir(path):  # path dosyaysa (klasör değilse)
+        print(path,os.path.getsize(path))
+        sm+= os.path.getsize(path)
+    else: # path bir klasör ise:
+        print(path)
+        for x in os.listdir(path):
+            sm+= disk_usage_my2(os.path.join(path,x))
+    return sm
+
+# raw string deniyor. boşluk karakteri varsa path'de raw string olarak yazınca sorun çıkmıyor
+path = r'D:\m7\bicycle'
+print(disk_usage_my2(path))
+print(disk_usage_my1(path))

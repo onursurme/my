@@ -25,6 +25,8 @@
 
 
 
+
+
 def binary_search(data,target,low,high):
     if low > high:
         return False

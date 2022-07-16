@@ -32,9 +32,11 @@
 def binsum(data):
     if len(data)==1:
         return data[0]
-    return binsum(data[0:len(data)//2])+binsum(data[len(data)//2:len(data)])
+    return binsum(data[:len(data)//2])+binsum(data[len(data)//2:])
 
 
+data1=[1,2,3,4]
+print(binsum(data1))
 
 
 # binary_sum(S,start,stop):  S isimli array'in toplamını döner
@@ -68,7 +70,7 @@ def binsum(data):
 
 
 
-def binary_sum(S, start, stop):      # kitaptaki
+def binary_sum(S, start, stop):      # kitaptaki (12_sol'da benim yazdığım daha basit,bu gereksiz uzun olmuş)
     if start >= stop:                # zero elements in slice (recursive çağrılarda bu koşula gerek yok ama
                                      # kullanıcıdan ilk çağrıda böyle gelebilir)
         print("start>=stop",start,stop)
@@ -108,7 +110,6 @@ def binary_sum1(S,start,stop):  # benim ilk yazdığım. kitaptakine baya benzer
 
 
 
-data1=[1,2,3,4]
 for x in range(0,4):
     print(x," : ",binary_sum1(data1,0,x))
 print()

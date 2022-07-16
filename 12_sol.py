@@ -2,6 +2,31 @@
 # S'i sağ ve sol diye iki parçaya böler, recursive olarak parçaların toplamından S'in toplamını bulur
 # stop son indeksin 1 büyüğü (Python'da slice'lar 2. indeksin 1 küçüğünde bitiyor. range(0,3)'ün 0,1,2 olması gibi)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def binary_sum(S,start,stop):
     if start==stop-1:
         return S[start]

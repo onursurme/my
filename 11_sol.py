@@ -34,7 +34,6 @@ def pow1(x,n):
 print(pow1(2,3))
 
 # pow1'in daha hızlı çalışanı yazılabilir. pow2(x,n)
-# pow1'in daha hızlı çalışanı yazılabilir. pow2(x,n)
 # 11_power1.py'de yaptığım çözümün daha iyisi olabilir diye düşünüyorum
 # her pozitif tamsayı 2'nin farklı pozitif tamsayı kuvvetlerinin toplamı olarak yazılabilir
 # hangi kuvvetlerin toplamı olduğunu bulmanın en kolay yolu sayıyı binary'ye çevirmektir
