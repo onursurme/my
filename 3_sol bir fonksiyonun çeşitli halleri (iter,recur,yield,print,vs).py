@@ -7,6 +7,13 @@
 # bu fonksiyonları kıyasla
 
 # bir problemin çözümünde kullanılabilecek farklı yöntemler : 
+# (her fonksiyonu farklı yöntemlerle yaz ve asymptotic analysis yap (hem cpu hem ram bakımından))
+# 1- iterative (soruya özgün yöntem, veya recursive olanın stack kullanılarak iterative hale getirilmesi)
+# 2- recursive (return, yield, print (print şart değil, bulduğuyla bir şey yapması anlamında))
+# 3- print eden recursive generator
+# 4- her yazdığının asymptotic analizini yap (cpu ve ram açısından), unit test yap, profile et (cpu ve ram açısından)
+#
+# eski daha uzun liste (üstteki daha iyi ve özet) :
 # 1- recursive yield (sürekli sıradakini üreten ve verilen bir n sayısının faktöryelini üreten diye 2 çeşit olabilir)
 # 2- recursive return
 # 3- recursive print

@@ -25,7 +25,17 @@ import os
 
 
 def disk_usage_my1(path):  # iterateive
-    pass
+    sm=0
+    fl=[path]  # list of folders to traverse
+    while fl:
+        path=fl.pop()
+        for x in os.listdir(path):
+            xp=os.path.join(path,x)
+            if not os.path.isdir(xp):
+                sm+=os.path.getsize(xp)
+            else:
+                fl.append(xp)
+    return sm
 
 
 
