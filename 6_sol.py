@@ -24,6 +24,10 @@ import os
 
 
 
+
+
+
+
 def disk_usage_my1(path):  # iterateive
     sm=0
     fl=[path]  # list of folders to traverse

@@ -25,6 +25,9 @@
 
 
 
+
+
+
 def summ(data):
     if len(data)==0:   # veya len(data)==1 ise return data[0]
         return 0

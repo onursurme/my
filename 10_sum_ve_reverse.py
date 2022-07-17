@@ -25,6 +25,10 @@
 
 
 
+
+
+
+
 def summ(data):
     if len(data)==0:
         return 0
